@@ -1,4 +1,3 @@
-<h1>moikka</h1>
-*teksti*
-teksti teksti
-_teksti_
+<h1>Ohjelmistotekniikka, harjoitustyö</h1>
+<h2>Tehtävät</h2>
+**Viikko 1**
