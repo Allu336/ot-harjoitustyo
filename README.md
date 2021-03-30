@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 <h1>Ohjelmistotekniikka, harjoitustyö</h1>
 <h2>Tehtävät</h2>
 <h3>Viikko 1</h3>
 <a href="https://github.com/Allu336/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt">kommentorivi.txt</a>
+=======
+<h1>Ohjelmistotekniikka, harjoitustyö</h1>
+<h2>Tehtävät</h2>
+<h3>Viikko 1</h3>
+<a href="https://github.com/Allu336/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt">kommentorivi.txt</a>
+
+<a href="https://github.com/Allu336/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt">gitlog.txt</a>
+>>>>>>> 2fc7ad8cba026ef9c046fc93ded62a39c0f8ee54
