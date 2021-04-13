@@ -11,3 +11,4 @@ Sovelluksessa voi pelata Tetristä.
 - kun rivi täyttyy, se tyhjentyy ja siitä saa pisteitä 
 - pelin asetuksista voidaan muuttaa esimerkiksi pelin nopeutta
 - sovellus pitää yllä pelaajan pisteitä ja aikaisempia suoriksia, ja näyttää niistä parhaan
+- jos laatikko täyttyy palikoista, peli päättyy
