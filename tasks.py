@@ -2,4 +2,4 @@ from invoke import task
 
 @task
 def start(ctx):
-    ctx.run("PY src/Tetris.py")
+    ctx.run("PY src/index.py")
