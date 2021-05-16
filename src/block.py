@@ -1,6 +1,3 @@
-import pygame
-import random
-
 class Block():
     def __init__(self):
         self.coordinates = []

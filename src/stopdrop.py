@@ -1,5 +1,3 @@
-import pygame
-
 class Stopdrop():
     def __init__(self, tetris, block):
         self.tetris = tetris
