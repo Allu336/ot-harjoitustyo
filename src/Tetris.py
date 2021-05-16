@@ -1,5 +1,3 @@
-import pygame
-
 class Tetris():
     def __init__(self):
         self.grid = []
@@ -7,7 +5,6 @@ class Tetris():
     def create_grid(self):
         for row in range(0,23):
             self.grid.append([".",".",".",".",".",".",".",".",".","."])
-        grid = self.grid
 
     def update_grid(self, old_cordinates, new_cordinates):
         for k in old_cordinates:

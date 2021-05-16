@@ -6,13 +6,14 @@ class Block():
         self.coordinates = []
         self.positions = []
         self.current_position = 0
+        self.first = False
     
-    def create_block(self, blocks):
+    def create_block(self, blocks, grid, next):
+        gameover = False
         self.coordinates = []
         self.positions = []
         self.current_position = 0
-        randomform = random.randint(0,6)
-        forms = blocks[randomform]
+        forms = blocks[next]
         form = forms[0]
         for x in forms:
             self.positions.append(x)
@@ -23,9 +24,12 @@ class Block():
                 elif form[t][n] == ".":
                     self.coordinates.append(((t,n+3),"."))
         empty = []
-        return(empty, self.coordinates)
+        for coordinate in self.coordinates:
+            if coordinate[1] == "1" and grid[coordinate[0][0]][coordinate[0][1]] == "2":
+                gameover = True
+        return(empty, self.coordinates, gameover)
     
-    def move_block(self,direction):
+    def move_block(self,direction, grid):
         old_coord = []
         coordinates2 = []           
         if direction == "L":
@@ -43,6 +47,11 @@ class Block():
                     return (old, self.coordinates)
                 else:
                     return ("no change")
+            else:
+                for coordinate in self.coordinates:
+                    if coordinate[1] == "1":
+                        if grid[coordinate[0][0]][coordinate[0][1]-1] == "2":
+                            return ("no change")
             for coordinate in self.coordinates:
                 coordinates2.append(coordinate)
             for coordinate in coordinates2:
@@ -65,6 +74,11 @@ class Block():
                     return(old, self.coordinates)
                 else:
                     return("no change")
+            else:
+                for coordinate in self.coordinates:
+                    if coordinate[1] == "1":
+                        if grid[coordinate[0][0]][coordinate[0][1]+1] == "2":
+                            return ("no change")
             for coordinate in self.coordinates:
                 coordinates2.append(coordinate)
             for coordinate in coordinates2:
@@ -74,21 +88,47 @@ class Block():
             return (old_coord,self.coordinates)
 
 
+    def rotate_block(self, grid):
+        right = False
+        left = False
+        old_coordinates = []
+        old_position = self.current_position
+        for coordinate in self.coordinates:
+            old_coordinates.append(coordinate)
 
-    def rotate_block(self):
+        for coordinate in self.coordinates:
+            if coordinate[0][1] == 9 and coordinate[1] == "1":
+                right = True
+                break
+            elif coordinate[0][1] == 0 and coordinate[1] == "1":
+                left = True
+                break
+        
         if self.current_position == (len(self.positions)-1):
-            uusi_current_position=self.positions[0]
-            self.current_position=0
+            new_position = self.positions[0]
+            self.current_position = 0
         else:
-            uusi_current_position = self.positions[(self.current_position+1)]
-            self.current_position =+ 1  
-        current_position = []        
+            new_position = self.positions[(self.current_position+1)]
+            self.current_position = self.current_position + 1
+        current_position = []
+
         for y in range(0,4):
             for x in range(0,5):
-                current_position.append(uusi_current_position[y][x])
+                current_position.append(new_position[y][x])
         lenght = len(self.coordinates)
         for x in range(0,lenght):
             coordinate = self.coordinates[0][0]
             self.coordinates.append((coordinate,current_position[x]))
             self.coordinates.pop(0)
+        for coordinate in self.coordinates:
+            if coordinate[1] == "1" and grid[coordinate[0][0]][coordinate[0][1]] == "2":
+                self.coordinates = old_coordinates
+                self.current_position = old_position
+                return
+        if right:
+            self.move_block("R", grid)
+            self.move_block("R", grid)
+        elif left:
+            self.move_block("L", grid)
+            self.move_block("L", grid)
     
